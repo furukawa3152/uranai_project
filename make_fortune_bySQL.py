@@ -3,6 +3,11 @@ def make_fortune():
     import sqlite3
     import random
     import itertools
+    import platform
+    if platform.system() == "Windows":
+        encord = "ANSI"
+    elif platform.system() == "macOS":
+        encord = "UTF-8"
 
     def sort_number(number):  # 1位には１位データ、2～8位には２位データ、41位以下には１１位データ、48位には48位データ、ほかは数/4データを適用
         if number == 1:
@@ -42,7 +47,8 @@ def make_fortune():
                              random.choice(results3)[1], sb_list[i - 1][0], sb_list[i - 1][1]])
     conn.commit()
     conn.close()
-    with open("fortune.csv", mode="w", encoding="ANSI", newline="") as f:
+
+    with open("fortune.csv", mode="w", encoding=encord, newline="") as f:
         w = csv.writer(f, delimiter=",")
         for i in range(len(fortune_list)):
             w.writerow(fortune_list[i])

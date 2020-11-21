@@ -1,5 +1,4 @@
 import csv
-from pprint import pprint
 import sqlite3
 
 uranaicomment_list1=[]#占いコメント１作成
