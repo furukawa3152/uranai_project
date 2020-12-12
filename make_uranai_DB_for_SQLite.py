@@ -11,6 +11,13 @@ uranai_list1=[]
 for i in range(len(uranaicomment_list1)):
     uranai_list1.append([int(uranaicomment_list1[i][0]),uranaicomment_list1[i][1]])
 
+#いったん削除のSQLを書く
+conn = sqlite3.connect("uranai_DB.db")
+sql ="""
+     DROP TABLE comment01;
+"""
+conn.execute(sql)
+
 conn =sqlite3.connect("uranai_DB.db")
 sql ="""
      CREATE TABLE comment01(
@@ -36,6 +43,12 @@ uranai_list2=[]
 for i in range(len(uranaicomment_list2)):
     uranai_list2.append([int(uranaicomment_list2[i][0]),uranaicomment_list2[i][1]])
 
+conn = sqlite3.connect("uranai_DB.db")
+sql ="""
+     DROP TABLE comment02;
+"""
+conn.execute(sql)
+
 conn =sqlite3.connect("uranai_DB.db")
 sql ="""
      CREATE TABLE comment02(
@@ -57,6 +70,12 @@ with open("coloritem.csv", "r") as f:
     reader =csv.reader(f)
     for i in reader:
         color_item.append(i)
+
+conn = sqlite3.connect("uranai_DB.db")
+sql ="""
+     DROP TABLE color_item;
+"""
+conn.execute(sql)
 
 conn =sqlite3.connect("uranai_DB.db")
 sql ="""
